@@ -1,0 +1,47 @@
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import { FronteggProvider } from '@frontegg/react';
+import { AdminPortal } from '@frontegg/react'
+
+function App() {
+
+const handleClick = () => {
+  AdminPortal.show();
+};
+
+<button onClick={handleClick}>Settings</button>
+  const [name, setName] = useState('World');
+
+  const handleInputChange = (e) => {
+    setName(e.target.value);
+  };
+
+  return (
+    <div>
+      <h1>Hello, {name}!</h1>
+      <input
+        type="text"
+        value={name}
+        onChange={handleInputChange}
+        placeholder="Enter your name"
+      />
+    </div>
+  );
+}
+
+ReactDOM.render(
+  <React.StrictMode>
+    <FronteggProvider
+      // Replace these options with your actual Frontegg configuration
+      contextOptions={{
+        baseUrl: 'https://app-uyzeb8r6qgxf.frontegg.com',
+        apiKey: '73dd427e-fc32-4149-9a98-c7982078f451',
+      }}
+    >
+      <App />
+    </FronteggProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+export default App;
